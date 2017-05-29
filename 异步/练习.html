@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1 2 3  ERROR
+    //
+    function it(num) {
+        console.log(num);
+        return ++num;
+    }
+    function al() {
+        throw new Error("OH NOES")
+    }
+    Promise.resolve(it(1))
+        .then(it)
+        .then(it)
+        .then(al)
+        .then(it)
+        .then(it)
+        .then(it)
+        .then(it)
+        .then(it)
+        .then(it)
+        .then(null,console.log)
+    //promise.all 的用法  只要当all数组里面所有的异步任务都成功的时候，
+    // 对应的哪个promise才会成功，只要有一个失败了那么他就失败了
+    var p1 = new Promise(function (resolve, reject) {
+        console.log("任务1 成功")
+    })
+    var p1 = new Promise(function (resolve, reject) {
+        console.log("任务1 成功")
+    })
+    var p1 = new Promise(function (resolve, reject) {
+        console.log("任务1 成功")
+    })
+       var p = Promise.all([p1,p2,p3]);
+    p.then(function () {
+        console.log("都成功了")
+    })
+    //promise.race 的用法  谁的时间快 谁执行
+
+</script>
